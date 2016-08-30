@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>isg.master</groupId>
+	<artifactId>isg</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+
+	<name>isg</name>
+	<url>http://maven.apache.org</url>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdk.version>1.7</jdk.version>
+		<jodatime.version>2.5</jodatime.version>
+		<junit.version>4.11</junit.version>
+		<log4j.version>1.2.17</log4j.version>
+		
+
+        <akka-remote_2.11.version>2.3.11</akka-remote_2.11.version>
+ 
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-core_2.10</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.akathist.maven.plugins.launch4j</groupId>
+			<artifactId>launch4j-maven-plugin</artifactId>
+			<version>1.5.1</version>
+			<type>maven-plugin</type>
+		</dependency>
+	</dependencies>
+<!-- mainClass>isg.master.isg.Main</mainClass-->
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <finalName>Master</finalName>
+                    <archive>
+                        <manifest>
+                            <mainClass>isg.master.isg.Main</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id> <!-- this is used for inheritance merges -->
+                 
+                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
